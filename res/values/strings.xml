@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">lab4a</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+     <string-array name="movies">
+        <item>The Shawshank Redemption</item>
+        <item>The Godfather</item>
+        <item>The Godfather: Part II</item>
+        <item>The Dark Knight</item>
+        <item>Pulp Fiction</item>
+        <item>The Good, the Bad and the Ugly</item>
+        <item>Schindler\'s List</item>
+        <item>12 Angry Men</item>
+        <item>The Lord of the Rings: The Return of the King</item>
+        <item>Fight Club</item>
+    </string-array>
+</resources>
