@@ -16,15 +16,31 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-
-    String[] movies; 
+	String[] strmovies = new String[] { 
+	        "The Shawshank Redemption", 
+		"The Godfather", 
+		"The Godfather: Part II", 
+		"The Dark Knight", 
+		"Pulp Fiction", 
+		"The Good, the Bad and the Ugly", 
+		"Schindler's List", 
+		"12 Angry Men", 
+		"The Lord of the Rings: The Return of the King", 
+		"Fight Club" 
+	    };
+	
+    List<String> movies; 
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_main);
  
-	movies = (String[])getResources().getStringArray(R.array.movies);
+	//movies = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.movies)));
+	movies = new ArrayList<String>();
+	for(int i=0; i < strmovies.length; i++)
+		movies.add(strmovies[i]);	
+	
 	
 	ListView listview = (ListView)findViewById(R.id.listView1);
 	final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movies);
@@ -42,11 +58,12 @@ public class MainActivity extends Activity {
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
             Toast.makeText(MainActivity.this, "You have long clicked on "+adapter.getItem(position)+" item", Toast.LENGTH_SHORT).show();
             
-           List<String> list = new ArrayList<String>(Arrays.asList(movies));
-           list.remove(adapter.getItem(position));
-           movies = list.toArray(new String[0]);
-           Log.println (Log.DEBUG, "lab4", "șterge " + adapter.getItem(position) + movies.length);
-
+           movies.remove(position); 
+           
+           //crapă adapter.remove(adapter.getItem(position));
+           
+           Log.println (Log.DEBUG, "lab4", "șterge " + adapter.getItem(position) + movies.size());
+           //adapter.notifyDataSetInvalidated();
            adapter.notifyDataSetChanged();
     	return true;
         }
